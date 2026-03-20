@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Massage in Milan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f7f7f7;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 600;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  font-size: 26px;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.menu a {
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;
+  color: black;
+}
+
+.menu.active {
+  display: block;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('https://picsum.photos/1200/800') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(47,93,98,0.7);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display';
+  font-size: 36px;
+}
+
+.hero button {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  width: 200px;
+  cursor: pointer;
+}
+
+/* SERVICES */
+.services {
+  padding: 30px;
+  text-align: center;
+}
+
+.card {
+  background: white;
+  margin: 15px auto;
+  padding: 15px;
+  border-radius: 15px;
+  max-width: 350px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* AI MATCHER */
+.ai {
+  padding: 30px;
+  text-align: center;
+  background: #ffffff;
+}
+
+textarea {
+  width: 90%;
+  max-width: 400px;
+  height: 80px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.ai button {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  background: #2f5d62;
+  color: white;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+/* CONTACT */
+.contact {
+  padding: 30px;
+  text-align: center;
+}
+
+.contact-card {
+  background: #2f5d62;
+  color: white;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  max-width: 300px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="logo">Massageinmilan</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div id="menu" class="menu">
+    <a href="#">Home</a>
+    <a href="#services">Services</a>
+    <a href="#ai">AI Match</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1>PRIVATE WELLNESS</h1>
+    <p>Mobile massage in Milan</p>
+
+    <button onclick="scrollToServices()">BOOK SESSION</button>
+    <button onclick="openTelegram()">TELEGRAM</button>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+
+  <div class="card">
+    <img src="./image/swedish.png">
+    <h3>SWEDISH RELAXING</h3>
+    <p>Gentle strokes perfect for stress relief</p>
+  </div>
+
+  <div class="card">
+    <img src="./image/shiatsu.png">
+    <h3>SHIATSU PRESSURE</h3>
+    <p>Deep pressure therapy</p>
+  </div>
+
+  <div class="card">
+    <img src="./image/thai.png">
+    <h3>THAI COMBINATION</h3>
+    <p>Stretching + pressure</p>
+  </div>
+
+</section>
+
+<!-- AI MATCHER -->
+<section id="ai" class="ai">
+  <h2>Find Your Perfect Massage</h2>
+  <textarea id="pain" placeholder="Describe your pain..."></textarea><br>
+  <button onclick="aiMatch()">MATCH ME</button>
+  <div id="result"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+
+  <div class="contact-card" onclick="callNow()">CALL NOW</div>
+  <div class="contact-card" onclick="openWhatsApp()">WHATSAPP</div>
+  <div class="contact-card" onclick="openTelegram()">TELEGRAM</div>
+
+</section>
+
+<footer>
+  Massageinmilan © 2026
+</footer>
+
+<script>
+
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+
+function callNow() {
+  window.location.href = "tel:+393713972872";
+}
+
+function openWhatsApp() {
+  window.open("https://wa.me/393713972872", "_blank");
+}
+
+function openTelegram() {
+  window.open("https://t.me/yourtelegram", "_blank");
+}
+
+function scrollToServices() {
+  document.getElementById("services").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+/* SIMPLE AI MATCHER */
+function aiMatch() {
+  let input = document.getElementById("pain").value.toLowerCase();
+  let result = "";
+
+  if (input.includes("stress") || input.includes("relax")) {
+    result = "Recommended: SWEDISH RELAXING 💆‍♂️";
+  } else if (input.includes("pain") || input.includes("muscle")) {
+    result = "Recommended: SHIATSU PRESSURE 💪";
+  } else if (input.includes("stretch") || input.includes("body")) {
+    result = "Recommended: THAI COMBINATION 🤸";
+  } else {
+    result = "Recommended: SWEDISH RELAXING 💆‍♂️";
+  }
+
+  document.getElementById("result").innerText = result;
+}
+
+</script>
+
+</body>
+</html>
